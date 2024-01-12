@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,10 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->sentence(\mt_rand(4, 8)),
             'slug' => $this->faker->slug(),
-            'body' => $this->faker->paragraph(\mt_rand(5,10))
+            'body' => $this->faker->paragraph(\mt_rand(150,300)),
+            'category_id' => \mt_rand(1, 10),
+            'user_id' => \mt_rand(1,5),
+            'published_at' => $this->faker->dateTime()
         ];
     }
 }
