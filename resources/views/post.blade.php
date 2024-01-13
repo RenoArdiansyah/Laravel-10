@@ -4,14 +4,19 @@
 
 @section('contain')
 
-    <article class="my-4">
-        <h2>{{ $post->title }}</h2>
-        <p class="px-3 text-black-50">
-            create by. <a href="/authors/{{ $post->user->username }}" class="text-decoration-none ">{{ $post->user->name }}</a> in <a
-                href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a>
-        </p>
-        {{-- <p>{{ $post->body }}</p> --}}
-        {!! $post->body !!}
-    </article>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <img src="https://source.unsplash.com/1700x800?{{ $post->category->slug }}" class="img-fluid" alt="...">
+            <h2 class="mt-2 mx-4">{{ $post->title }}</h2>
+            <small class="px-5 text-muted">
+                Post by. <a href="/authors/{{ $post->user->username }}"
+                    class="text-decoration-none ">{{ $post->user->name }}</a> in <a
+                    href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a>
+            </small>
+            <article class="fs-4 py-5">
+                {!! $post->body !!}
+            </article>
+        </div>
+    </div>
     <a href="/posts" class="pb-5">Kembali ke posts</a>
 @endsection

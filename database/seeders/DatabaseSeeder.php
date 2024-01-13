@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         Post::factory(50)->create();
         
         $categories =  [
-            ['name' => 'Progamer', 'slug' => 'progamer'],
+            ['name' => 'Programming', 'slug' => 'programming'],
             ['name' => 'Teknologi', 'slug' => 'teknologi'],
             ['name' => 'Personal', 'slug' => 'personal'],
             ['name' => 'Travel', 'slug' => 'travel'],

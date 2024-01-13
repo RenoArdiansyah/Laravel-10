@@ -33,7 +33,7 @@ class CategoryController extends Controller
             // Menggunakan Str::limit() untuk membatasi teks 'body'
             $post->body = Str::limit($post->body, $limit = 350, $end = '...');
         }
-        return view('personallist', [
+        return view('posts', [
             'title'     => $category->name,
             'type'      =>  $this->type,  
             'posts'     => $posts->load('category', 'user')

@@ -20,7 +20,8 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->sentence(\mt_rand(4, 8)),
             'slug' => $this->faker->slug(),
-            'body' => $this->faker->paragraph(\mt_rand(150,300)),
+            // 'body' => '<p>' . \implode('</p><p>'.$this->faker->paragraphs(\mt_rand(150,300))). '</p>',
+            'body' => \collect($this->faker->paragraphs(\mt_rand(150,250)))->map(fn($p) => "<p>$p</p>")->implode(''),
             'category_id' => \mt_rand(1, 10),
             'user_id' => \mt_rand(1,5),
             'published_at' => $this->faker->dateTime()
