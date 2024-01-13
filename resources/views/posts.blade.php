@@ -3,7 +3,7 @@
 @section('title', 'Posts')
 
 @section('contain')
-    <h1>ini halaman posts</h1>
+    <h1 class="pt-5">ini halaman posts</h1>
 
     <hr>
     @foreach ($posts as $post)

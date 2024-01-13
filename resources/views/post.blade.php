@@ -4,7 +4,6 @@
 
 @section('contain')
 
-
     <article class="my-4">
         <h2>{{ $post->title }}</h2>
         <p class="px-3 text-black-50">

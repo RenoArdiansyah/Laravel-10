@@ -18,7 +18,7 @@ class AuthorController extends Controller
         return view('personallist', [
             'title' => $user->name, // Menampilkan nama user
             'type'  => $this->type,
-            'posts' => $user->posts // Menampilkan semua post dari user
+            'posts' => $user->posts->load('category', 'user') // Menampilkan semua post dari user
         ]);
     }
 }

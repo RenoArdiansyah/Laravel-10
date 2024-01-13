@@ -17,6 +17,7 @@ class CategoryController extends Controller
         return \view('categories', [
             'title'   => 'Categoriey',
             'bodys'    => Category::all()
+
         ]);
     }
 
@@ -35,7 +36,7 @@ class CategoryController extends Controller
         return view('personallist', [
             'title'     => $category->name,
             'type'      =>  $this->type,  
-            'posts'     => $posts
+            'posts'     => $posts->load('category', 'user')
         ]);
 
     }

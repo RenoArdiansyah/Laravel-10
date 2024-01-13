@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             //     'email' => 'test@example.com',
             // ]);
             
-        Post::factory(25)->create();
+        Post::factory(50)->create();
         
         $categories =  [
             ['name' => 'Progamer', 'slug' => 'progamer'],

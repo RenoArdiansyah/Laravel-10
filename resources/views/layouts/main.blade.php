@@ -17,7 +17,7 @@
 
 <body>
     {{-- navbar start --}}
-    <nav class="navbar navbar-expand-lg bg-success navbar-dark">
+    <nav class="navbar navbar-expand-lg bg-success navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="/">the<span class="text-title-green">YNTKTS</span>
             </a>
@@ -47,7 +47,7 @@
     {{-- navbar end --}}
 
     {{-- containe start --}}
-    <div class="container">
+    <div class="container px-3 pt-5">
         @yield('contain')
     </div>
     {{-- containe end --}}
