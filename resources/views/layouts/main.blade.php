@@ -20,7 +20,7 @@
     @include('partials.navbar')
 
     {{-- Content container --}}
-    <div class="container px-3 pt-5">
+    <div class="container px-3 pt-5 mb-5">
         @yield('contain')
     </div>
 
