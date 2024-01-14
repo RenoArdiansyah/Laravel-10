@@ -11,14 +11,11 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts  = Post::latest()->get();
+        $posts  = Post::latest()->Filter(Request(['search', 'category', 'author']))->paginate(7);
 
-        //
         foreach ($posts as $post) {
-            // Menggunakan Str::limit() untuk membatasi teks 'body'
             $post->body = Str::limit($post->body, $limit = 350, $end = '...');
         }
-
         return view('posts', [
             'posts' => $posts
         ]);

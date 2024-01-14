@@ -9,9 +9,9 @@
             <img src="https://source.unsplash.com/1700x800?{{ $post->category->slug }}" class="img-fluid" alt="...">
             <h2 class="mt-2 mx-4">{{ $post->title }}</h2>
             <small class="px-5 text-muted">
-                Post by. <a href="/authors/{{ $post->user->username }}"
+                Post by. <a href="/posts?author={{ $post->user->username }}"
                     class="text-decoration-none ">{{ $post->user->name }}</a> in <a
-                    href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a>
+                    href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a>
             </small>
             <article class="fs-4 py-5">
                 {!! $post->body !!}
