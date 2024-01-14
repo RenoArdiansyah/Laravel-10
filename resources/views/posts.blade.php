@@ -6,7 +6,7 @@
     <div class="row mt-5 mb-3">
         <div class="col-md-11 mx-auto">
             <form action="/posts">
-                @if(Request('category'))
+                @if (Request('category'))
                     <input type="hidden" name="category" value="{{ Request('category') }}">
                     <h2 class="text-center">Posts Category {{ Request('category') }}</h2>
                     <hr>
@@ -19,7 +19,8 @@
                     <hr>
                 @endif
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search.." name="search" value="{{ Request('search'); }}">
+                    <input type="text" class="form-control" placeholder="Search.." name="search"
+                        value="{{ Request('search') }}">
                     <button class="btn btn-success" type="submit">Search</button>
                 </div>
             </form>
@@ -59,7 +60,8 @@
                         <img src="https://source.unsplash.com/1200x800?{{ $post->category->slug }}" class="card-img-top"
                             alt="">
                         <a class="btn btn-outline-light position-absolute m-2" style="background-color: rgba(0, 0, 0, 0.3)"
-                            href="/posts?category={{ $post->category->slug }}" role="button">{{ $post->category->name }}</a>
+                            href="/posts?category={{ $post->category->slug }}"
+                            role="button">{{ $post->category->name }}</a>
 
                         <div class="card-body">
                             <h5 class="card-title"><a href="/posts/{{ $post->slug }}"
@@ -78,13 +80,12 @@
                 </div>
             @endforeach
             <hr>
-            <div class="d-flex justify-content-center mb-5" >
+            <div class="d-flex justify-content-center mb-5">
                 @if ($posts->hasPages())
                     {{ $posts->links() }}
                 @endif
             </div>
         </div>
-
     @else
         <div class="row mt-5">
             <p class="text-center fs-4">

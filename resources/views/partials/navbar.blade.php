@@ -47,6 +47,10 @@
                     <li class="nav-item px-2">
                         <a class="nav-link {{request()->is('categories*')  ? 'active' : '' }}" href="/categories">ListCategory</a>
                     </li>
+                    <li class="nav-item px-2 rounded bg-success ">
+                        <a class="nav-link text-white" href="/login"><i class="bi bi-box-arrow-in-right mx-1 "></i>Login</a>
+                    </li>
+                    
                 </ul>
             </div>
         </div>
