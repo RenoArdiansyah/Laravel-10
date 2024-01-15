@@ -39,3 +39,5 @@ Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
 
 Route::get('/registerd', [RegistersController::class, 'index']);
+
+Route::post('/registerd', [RegistersController::class, 'store'])->name('registerd.store');
