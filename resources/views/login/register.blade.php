@@ -10,6 +10,11 @@
                 <div class="card-body">
                     <h3 class="text-center">Registerd</h3>
                     {{-- <form class="my-2" action="{{ route('registerd.store') }}" method="POST"> --}}
+                        @if(session()->has('loginErr'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <form class="my-2" action="" method="POST">
                         @csrf
                         <div class="form-group my-2">

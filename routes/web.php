@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\RegistersController;
 
 /*
@@ -36,8 +37,14 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show'] );
 
 Route::get('/categories', [CategoryController::class, 'index']);
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 
-Route::get('/registerd', [RegistersController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
 
-Route::post('/registerd', [RegistersController::class, 'store'])->name('registerd.store');
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/registerd', [RegistersController::class, 'index'])->middleware('guest');
+
+Route::post('/registerd', [RegistersController::class, 'store']);
+
+Route::get('/dashboard', [DashbordController::class, 'index'])->middleware('auth');

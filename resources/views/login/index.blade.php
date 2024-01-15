@@ -14,20 +14,32 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    <form class="my-2" action="/registerd" method="POST"> <!-- Tambahkan class text-center di sini -->
+                    @if(session()->has('loginErr'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('loginErr') }}
+                        </div>
+                    @endif
+                    <form class="my-2" action="/login" method="POST"> 
+                        @csrf
                         <div class="form-group my-2">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" id="username" placeholder="Enter your username" name="login-username">
+                            <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Enter your username" name="username" autofocus required  value="{{ old('username') }}">
+                            @error('username')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group my-2">
                             <label for="password">Password:</label>
-                            <input type="password" class="form-control" id="password" placeholder="Enter your password" name="login-pass">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Enter your password" name="password" required value="{{ old('password') }}">
+                            @error('password')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         
                         <small class="d-block my-2 mx-3">not register <a href="/registerd" class="text-decoration-none">Register now!</a></small>
                         <div class="text-center pt-2">
                             <hr>
-                            <button type="submit" class="btn btn-primary btn-block w-50 mx-auto">Login</button> <!-- Menggunakan kelas w-75 untuk lebar 75% -->
+                            <button type="submit" class="btn btn-primary btn-block w-50 mx-auto">Login</button>
                         </div>
                     </form>
                 </div>
