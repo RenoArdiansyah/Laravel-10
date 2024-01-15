@@ -1,15 +1,19 @@
-@extends('layouts.main')
+@extends('dashboard.layouts.main')
 
-@section('title', 'Abouts')
-
-@section('contain')
-    <h1>Ini adalah halaman dashbord</h1>
-    <h1>Ini adalah halaman dashbord</h1>
-    <h1>Ini adalah halaman dashbord</h1>
-    <h1>Ini adalah halaman dashbord</h1>
-    <h1>Ini adalah halaman dashbord</h1>
-    <h1>Ini adalah halaman dashbord</h1>
-    <h1>Ini adalah halaman dashbord</h1>
+@section('container')
   
-    
+<div class="table-responsive small">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Title</th>
+        <th scope="col">Category</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
 @endsection

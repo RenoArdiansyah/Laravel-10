@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\RegistersController;
 
 /*
@@ -47,4 +47,6 @@ Route::get('/registerd', [RegistersController::class, 'index'])->middleware('gue
 
 Route::post('/registerd', [RegistersController::class, 'store']);
 
-Route::get('/dashboard', [DashbordController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', fn() => view('dashboard.index'))->middleware('auth');
+
+Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
