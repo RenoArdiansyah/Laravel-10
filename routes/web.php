@@ -33,7 +33,7 @@ Route::get('/abouts', function () {
 
 Route::get('/posts', [PostController::class, 'index']);
 
-Route::get('/posts/{post:slug}', [PostController::class, 'show'] );
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
 
@@ -47,9 +47,8 @@ Route::get('/registerd', [RegistersController::class, 'index'])->middleware('gue
 
 Route::post('/registerd', [RegistersController::class, 'store']);
 
-Route::get('/dashboard', fn() => view('dashboard.index'))->middleware('auth');
+Route::get('/dashboard', fn () => view('dashboard.index'))->middleware('auth');
 
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 
 Route::get('/dashboard/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
-

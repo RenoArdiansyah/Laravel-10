@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-  
+
 <div class="table-responsive small">
   <table class="table table-striped table-sm">
     <thead>

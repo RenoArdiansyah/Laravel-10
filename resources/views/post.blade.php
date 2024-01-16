@@ -6,8 +6,13 @@
     <div class="container" style="margin-top: 80px">
         <div class="row justify-content-center mt-5">
             <div class="col-md-10">
-                <img src="https://source.unsplash.com/1700x800?{{ $post->category->slug }}" class="img-fluid" alt="...">
-                <h2 class="mt-2 mx-4">{{ $post->title }}</h2>
+                @if ($post->image)
+                <div class="" style="max-height: 350px; overflow: hidden;">
+                    <img src="{{ asset('storage/'. $post->image) }}" class="img-fluid" alt="...">
+                </div>
+                @else
+                    <img src="https://source.unsplash.com/1700x800?{{ $post->category->slug }}" class="img-fluid" alt="...">
+                @endif                <h2 class="mt-2 mx-4">{{ $post->title }}</h2>
                 <small class="px-5 text-muted">
                     Post by. <a href="/posts?author={{ $post->user->username }}"
                         class="text-decoration-none ">{{ $post->user->name }}</a> in <a
