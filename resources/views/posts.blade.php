@@ -69,7 +69,7 @@
                                         class="text-decoration-none text-body">{{ $post->title }}</a></h5>
                                 <small class="px-3 text-muted">
                                     by. <a href="/posts?author={{ $post->user->username }}"
-                                        class="text-decoration-none ">{{ $post->user->name }}</a>
+                                        class="text-decoration-none ">{{ $post->user    ->name }}</a>
                                 </small>
                                 <p class="card-muted"><small class="text-muted">Last updated
                                         {{ $posts[0]->created_at->diffForHumans() }}</small>
