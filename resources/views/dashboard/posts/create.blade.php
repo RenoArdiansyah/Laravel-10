@@ -42,7 +42,8 @@
 
   <div class="mb-3">
     <label for="image" class="form-label @error('image') is-invalid @enderror">Post image</label>
-    <input class="form-control" type="file" id="image" name="image">
+    <input class="form-control" type="file" id="image" name="image" onchange="previewImage()">
+    <img class="img-preview img-fluid my-3 col-2">
   </div>
   @error('image')
   <div class="invalid-feedback">{{ $message }}</div>
@@ -60,15 +61,26 @@
 </form>
 
 <script>
-  // Pastikan elemen dengan ID 'title' sudah ada di halaman
-        const title = document.querySelector('#title');
-        const slug = document.querySelector('#slug');
+  const title = document.querySelector('#title');
+  const slug = document.querySelector('#slug');
 
-        title.addEventListener('change', function() {
-            fetch("/dashboard/checkSlug?title=" + title.value)
-                .then(response => response.json())
-                .then(data => slug.value = data.slug)
-                .catch(error => console.error('Error:', error));
-        });
+  title.addEventListener('change', function() {
+    fetch("/dashboard/checkSlug?title=" + title.value)
+      .then(response => response.json())
+      .then(data => slug.value = data.slug)
+      .catch(error => console.error('Error:', error));
+  });
+
+  function previewImage() {
+  const image = document.querySelector('#image');
+  const imgPreview = document.querySelector('.img-preview');
+  imgPreview.style.display = 'block';
+    const oFReader = new FileReader(); 
+    oFReader.readAsDataURL(image.files[0]);
+
+    oFReader.onload = function(oFREvent) {
+      imgPreview.src = oFREvent.target.result; 
+    }
+  }
 </script>
 @endsection
