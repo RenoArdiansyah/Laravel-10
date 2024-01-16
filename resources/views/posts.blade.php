@@ -44,7 +44,7 @@
                                     class="text-decoration-none ">{{ $posts[0]->user->name }}</a> in <a
                                     href="/posts?category={{ $posts[0]->category->slug }}">{{ $posts[0]->category->name }}</a>
                             </small>
-                            <p class="card-text">{!! $posts[0]->body !!}</p>
+                            <p class="card-text">{!! $posts[0]->excerpt !!}</p>
                             <p class="card-muted"><small class="text-muted">Last updated
                                     {{ $posts[0]->created_at->diffForHumans() }}</small>
                             </p>
@@ -74,7 +74,7 @@
                                 <p class="card-muted"><small class="text-muted">Last updated
                                         {{ $posts[0]->created_at->diffForHumans() }}</small>
                                 </p>
-                                <p class="card-text"> {!! $post->body !!} </p>
+                                <p class="card-text"> {!! $post->excerpt !!} </p>
                                 <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read More</a>
                             </div>
                         </div>

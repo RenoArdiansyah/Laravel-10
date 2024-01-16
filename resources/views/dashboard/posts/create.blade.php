@@ -5,33 +5,57 @@
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
+                autofocus value="{{ old('title') }}">
+            @error('title')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="text" class="form-control" id="slug" name="slug" disabled readonly required>
+            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
+                readonly required value="{{ old('slug') }}">
+            @error('slug')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Category :</label>
-            <select class="form-select" name="categoty_id">
-                <option selected>Pilih Category</option>
+            <select class="form-select  @error('category_id') is-invalid @enderror" name="category_id">
+                <option>Pilih Category</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @if ($category->id == old('category_id'))
+                        <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                    @else
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endif
                 @endforeach
             </select>
-        </div>
-        <div class="mb-3">
+            @error('category_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+          </div>
+          <div class="mb-3">
             <label for="body" class="form-label">Body :</label>
-            <input id="body" type="hidden" name="body">
+            <input id="body" type="hidden" name="body" value="{{ old('body') }}">
             <trix-editor input="body"></trix-editor>
+            @error('body')
+              <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Create Post</button>
     </form>
+
     <script>
+        // Pastikan elemen dengan ID 'title' sudah ada di halaman
+        const title = document.querySelector('#title');
+        const slug = document.querySelector('#slug');
+
         title.addEventListener('change', function() {
             fetch("/dashboard/checkSlug?title=" + title.value)
                 .then(response => response.json())
                 .then(data => slug.value = data.slug)
+                .catch(error => console.error('Error:', error));
         });
     </script>
 @endsection

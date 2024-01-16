@@ -3,6 +3,11 @@
 @section('title', 'My Posts')
 
 @section('container')
+@if (session()->has('success'))
+  <div class="alert alert-success" role="alert">
+    {{ session('success') }}
+  </div>
+@endif
 <div class="table-responsive">
   <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Create new post</a>
     <table class="table table-striped table-sm ">
@@ -11,16 +16,18 @@
           <th scope="col">No.</th>
           <th scope="col">Title</th>
           <th scope="col">Category</th>
+          <th scope="col">Excerpt</th>
           <th scope="col">Created at</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
         @foreach ($posts as $post)
         <tr>
-            <th>{{ $loop->iteration }}</th>
+            <th class="text-center py-3">{{ $loop->iteration }}</th>
             <td>{{ $post->title }}</td>
-            <td>{{ $post->category->name }}</td>
-            <td>{{ $post->created_at->diffForHumans()  }}</td>
+            <td class="text-center py-3">{{ $post->category->name }}</td>
+            <td>{{ $post->excerpt }}</td>
+            <td class="text-center py-3">{{ $post->created_at->diffForHumans()  }}</td>
             <td class="mx-1">
                 <a href="/dashboard/posts/{{ $post->slug }}" class="badge mx-1 p-1 bg-info "><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></a>
 
