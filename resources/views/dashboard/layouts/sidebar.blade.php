@@ -9,7 +9,7 @@
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2  {{ request()->is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
+                    <a class="nav-link d-flex align-items-center gap-2 text-dark {{ request()->is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
                         <svg class="bi">
                             <use xlink:href="#house-fill" />
                         </svg>
@@ -17,7 +17,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2  {{ request()->is('dashboard/posts') ? 'active' : '' }}" href="/dashboard/posts">
+                    <a class="nav-link d-flex align-items-center gap-2 text-dark {{ Request::is('dashboard/posts*') }}" href="/dashboard/posts">
                         <svg class="bi">
                             <use xlink:href="#graph-up" />
                         </svg>

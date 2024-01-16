@@ -6,13 +6,28 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
-    protected $guarded  =['id'];
-    protected $with     = ['user', 'category'];
+    protected $guarded = ['id'];
+    protected $with = ['user', 'category'];
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function scopeFilter($query, array $filters)
     {
@@ -46,4 +61,5 @@ class Post extends Model
     {
         return 'slug';
     }
+
 }
