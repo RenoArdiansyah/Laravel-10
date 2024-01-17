@@ -1,11 +1,12 @@
 <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="/">Laravel</a>
-  <!-- Tombol Pencarian -->
+ 
+  {{-- start search --}}
   <form class="d-flex mx-auto">
     <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 80.1vw;">
     <button class="btn btn-outline-light" type="submit">Search</button>
   </form>
-
+  {{-- end search --}}
   <ul class="navbar-nav flex-row d-md-none">
     <li class="nav-item text-nowrap">
       <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch"

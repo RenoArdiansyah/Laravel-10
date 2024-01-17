@@ -1,30 +1,32 @@
 @extends('dashboard.layouts.main')
 
-@section('title', 'Edit my Post')
+@section('title', 'Edit My Post')
 
 @section('container')
-    <form method="POST" action="/dashboard/posts/{{ $post->slug }}"  enctype="multipart/form-data">
+    <form method="POST" action="/dashboard/posts/{{ $post->slug }}" enctype="multipart/form-data">
         @method('put')
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
-                autofocus value="{{ old('title', $post->title) }}">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" autofocus
+                value="{{ old('title', $post->title) }}">
             @error('title')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
-                readonly required value="{{ old('slug', $post->slug) }}">
+            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" readonly required
+                value="{{ old('slug', $post->slug) }}">
             @error('slug')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+
         <div class="mb-3">
             <label for="category" class="form-label">Category :</label>
-            <select class="form-select  @error('category_id') is-invalid @enderror" name="category_id">
+            <select class="form-select @error('category_id') is-invalid @enderror" name="category_id">
                 <option>Pilih Category</option>
                 @foreach ($categories as $category)
                     @if ($category->id == old('category_id', $post->category->id))

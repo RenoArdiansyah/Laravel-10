@@ -9,6 +9,7 @@ use App\Models\User;
 
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,12 +18,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(5)->create();
+        User::factory(4)->create();
         
-        // User::factory()->create([
-            //     'name' => 'Test User',
-            //     'email' => 'test@example.com',
-            // ]);
+        User::factory()->create([
+            'name'  => 'Reno45',
+            'username' => 'reno45',
+            'email' => 'admin@exemple.com',
+            'password' => Hash::make('password'),
+            'is_admin' => true
+            ]);
             
         Post::factory(50)->create();
         

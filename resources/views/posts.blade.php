@@ -7,23 +7,23 @@
   <div class="row mt-5 mb-3">
     <div class="col-md-11 mx-auto">
       <form action="/posts">
-        @if (Request('category'))
-        <input type="hidden" name="category" value="{{ Request('category') }}">
-        <h2 class="text-center">Posts Category {{ Request('category') }}</h2>
-        <hr>
-        @elseif(Request('author'))
-        <input type="hidden" name="author" value="{{ Request('author') }}">
-        <h2 class="text-center">Posts createt by {{ Request('author') }}</h2>
-        <hr>
-        @else
-        <h2 class="text-center">Posts All</h2>
-        <hr>
-        @endif
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Search.." name="search" value="{{ Request('search') }}">
           <button class="btn btn-success" type="submit">Search</button>
         </div>
       </form>
+      @if (Request('category'))
+      <input type="hidden" name="category" value="{{ Request('category') }}">
+      <h2 class="text-center">Posts Category {{ Request('category') }}</h2>
+      <hr>
+      @elseif(Request('author'))
+      <input type="hidden" name="author" value="{{ Request('author') }}">
+      <h2 class="text-center">Posts createt by {{ Request('author') }}</h2>
+      <hr>
+      @else
+      <h2 class="text-center">Posts All</h2>
+      <hr>
+      @endif
     </div>
   </div>
   @if ($posts->count())

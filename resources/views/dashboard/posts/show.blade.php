@@ -7,11 +7,11 @@
   <div class="row justify-content-center mt-5">
     <div class="col-md-10">
       @if ($post->image)
-      <div class="" style="max-height: 350px; overflow: hidden;">
-        <img src="{{ asset('storage/'. $post->image) }}" class="img-fluid" alt="...">
-      </div>
+        <div class="" style="max-height: 350px; overflow: hidden;">
+          <img src="{{ asset('storage/'. $post->image) }}" class="img-fluid" alt="...">
+        </div>
       @else
-      <img src="https://source.unsplash.com/1700x800?{{ $post->category->slug }}" class="img-fluid" alt="...">
+        <img src="https://source.unsplash.com/1700x800?{{ $post->category->slug }}" class="img-fluid" alt="...">
       @endif
       <h2 class="mt-2 mx-4">{{ $post->title }}</h2>
       <div class="d-flex">

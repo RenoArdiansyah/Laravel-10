@@ -10,23 +10,23 @@
         <div class="card-body">
           <h3 class="text-center">Login</h3>
           @if(session()->has('success'))
-          <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-          </div>
+            <div class="alert alert-success" role="alert">
+              {{ session('success') }}
+            </div>
           @endif
           @if(session()->has('loginErr'))
-          <div class="alert alert-danger" role="alert">
-            {{ session('loginErr') }}
-          </div>
+            <div class="alert alert-danger" role="alert">
+              {{ session('loginErr') }}
+            </div>
           @endif
           <form class="my-2" action="/login" method="POST">
             @csrf
             <div class="form-group my-2">
-              <label for="username">Username:</label>
-              <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
-                placeholder="Enter your username" name="username" autofocus required value="{{ old('username') }}">
-              @error('username')
-              <div class="invalid-feedback">{{ $message }}</div>
+              <label for="email">Email:</label>
+              <input type="text" class="form-control @error('email') is-invalid @enderror" id="email"
+                placeholder="Enter your email" name="email" autofocus required value="{{ old('email') }}">
+              @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
               @enderror
             </div>
             <div class="form-group my-2">
@@ -34,11 +34,11 @@
               <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
                 placeholder="Enter your password" name="password" required value="{{ old('password') }}">
               @error('password')
-              <div class="invalid-feedback">{{ $message }}</div>
+                <div class="invalid-feedback">{{ $message }}</div>
               @enderror
             </div>
 
-            <small class="d-block my-2 mx-3">not register <a href="/registerd" class="text-decoration-none">Register
+            <small class="d-block my-2 mx-3">Not registered? <a href="/register" class="text-decoration-none">Register
                 now!</a></small>
             <div class="text-center pt-2">
               <hr>
@@ -50,6 +50,4 @@
     </div>
   </div>
 </div>
-
-
 @endsection
