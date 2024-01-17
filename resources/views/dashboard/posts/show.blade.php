@@ -7,13 +7,15 @@
   <div class="row justify-content-center mt-5">
     <div class="col-md-10">
       @if ($post->image)
-        <div class="" style="max-height: 350px; overflow: hidden;">
-          <img src="{{ asset('storage/'. $post->image) }}" class="img-fluid" alt="...">
+        <div class="mb-4" style="max-height: 350px; overflow: hidden;">
+          <img src="{{ asset('storage/'. $post->image) }}" class="img-fluid" alt="Post Image">
         </div>
       @else
-        <img src="https://source.unsplash.com/1700x800?{{ $post->category->slug }}" class="img-fluid" alt="...">
+        <img src="https://source.unsplash.com/1700x800?{{ $post->category->slug }}" class="img-fluid" alt="Default Image">
       @endif
+
       <h2 class="mt-2 mx-4">{{ $post->title }}</h2>
+
       <div class="d-flex">
         <a href="/dashboard/posts" class="btn btn-success mr-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -35,8 +37,7 @@
           Edit
         </a>
 
-        <form action="/dashboard/posts/{{ $post->slug }}" method="POST"
-          onsubmit="return confirm('Yakin Mau hapus data')">
+        <form action="/dashboard/posts/{{ $post->slug }}" method="POST" onsubmit="return confirm('Yakin Mau hapus data')">
           @method('delete')
           @csrf
           <button class="btn btn-danger">
@@ -51,11 +52,12 @@
           </button>
         </form>
       </div>
-
-      <article class="fs-4 py-5">
+      <article class="fs-4 py-5 container" style="max-width: 100%; overflow-x: auto; white-space: pre-line; word-wrap: break-word;">
         {!! $post->body !!}
       </article>
+      
     </div>
   </div>
 </div>
+
 @endsection
