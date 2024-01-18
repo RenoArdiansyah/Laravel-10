@@ -38,7 +38,7 @@
               @enderror
             </div>
 
-            <small class="d-block my-2 mx-3">Not registered? <a href="/register" class="text-decoration-none">Register
+            <small class="d-block my-2 mx-3">Not registered? <a href="/registerd" class="text-decoration-none">Register
                 now!</a></small>
             <div class="text-center pt-2">
               <hr>
